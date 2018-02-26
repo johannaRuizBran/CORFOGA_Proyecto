@@ -213,7 +213,7 @@ class UsersController extends Controller {
         $validator = Validator::make($request->all(), $rules);
         // Si la validación de algunos de los datos falla, se informa al usuario.
         if($validator->fails()) {
-            return Redirect::to('admin/usuarios/'.$id.'/edit')->withErrors($validator)->withInput();
+            return Redirect::to('admin/usuarios/'.$id)->withErrors($validator)->withInput();
         }
         else {
             $state = 'Listo';

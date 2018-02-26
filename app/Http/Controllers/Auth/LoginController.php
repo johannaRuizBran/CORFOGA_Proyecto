@@ -23,19 +23,20 @@ class LoginController extends Controller {
     }
 
     public function remoteLogin(Request $request) {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['email', 'password']);        
         try {
             if(!$token = JWTAuth::attempt($credentials)){
                 return response()->json(['error' => 'Los credenciales son incorrectos'], 401);
             }
-            else {
+            
+            else {                
                 $user = DB::table('users')
                     ->where('email', $request['email'])
                     ->first();
-                if($user->role == 'i'){
+                if($user->role == 'i'){                    
                     return response()->json(compact('token'))->setStatusCode(200);
                 }
-                else {
+                else {                    
                     return response()->json(['error' => 'El tipo de usuario no es un Inspector'], 403);
                 }
             }

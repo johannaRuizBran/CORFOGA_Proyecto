@@ -1,5 +1,6 @@
 <?php
 
+
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -17,5 +18,8 @@ Route::group(['middleware' => ['auth', 'admin'],'namespace' => 'Admin', 'prefix'
 });
 
 Route::resource('inspectores', 'InspectorController', ['middleware' => ['auth' ,'inspector']]);
+
 Route::get('productores', ['as' => 'productores', 'uses' => 'FarmerController@index'])->middleware('farmer');
+
+
 Route::get('productores/fincas/{farm}', ['as' => 'productores.fincas', 'uses' => 'FarmerController@getFarm'])->middleware('farmer');

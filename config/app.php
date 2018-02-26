@@ -180,6 +180,10 @@ return [
         /*
          * Paquetes agregados para el proyecto CORFOGA...
          */
+
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+
+
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
@@ -235,6 +239,9 @@ return [
         /*
          * Paquetes agregados para el proyecto CORFOGA...
          */
+
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+        
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
