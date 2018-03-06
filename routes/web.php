@@ -23,6 +23,11 @@ Route::group(['middleware' => ['auth', 'inspector'],'namespace' => 'Inspector', 
     //Route::resource('usuarios', 'UsersController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update']]);
 });
 
+Route::group(['middleware' => ['auth', 'farmer'],'namespace' => 'Farmer', 'prefix' => 'farmer', 'as' => 'farmer.'], function() {
+    Route::get('inicio', ['as' => 'inicio', 'uses' => 'FarmController@index']);//solo admi
+    //Route::resource('usuarios', 'UsersController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update']]);
+});
+
 Route::resource('inspectores', 'InspectorController', ['middleware' => ['auth' ,'inspector']]);
 
 Route::get('productores', ['as' => 'productores', 'uses' => 'FarmerController@index'])->middleware('farmer');

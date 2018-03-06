@@ -21,7 +21,7 @@ class Farmer
             return redirect()->route('admin.inicio');
         }
         elseif ($user->role == 'i') {
-            return redirect()->route('inspectores');
+            return redirect()->route('inspector.inicio');
         }
         return $next($request);
     }

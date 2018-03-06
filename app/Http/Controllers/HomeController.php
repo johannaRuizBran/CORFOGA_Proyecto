@@ -23,7 +23,7 @@ class HomeController extends Controller {
                 return redirect()->route('inspector.inicio');
             }
             else {
-                return redirect()->route('productores');
+                return redirect()->route('farmer.inicio');
             }
         }
         else {
