@@ -56,5 +56,5 @@ class User extends Authenticatable {
     // Se asocial el usuario con sus historiales.
     public function historicals() {
         $this->hasMany('App\Historical', 'userID',' id');
-    }
+    } 
 }

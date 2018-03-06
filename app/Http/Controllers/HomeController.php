@@ -20,7 +20,7 @@ class HomeController extends Controller {
                 return redirect()->route('admin.inicio');
             }
             elseif($user->role == 'i') {
-                return redirect()->route('inspectores');
+                return redirect()->route('inspector.inicio');
             }
             else {
                 return redirect()->route('productores');

@@ -34,10 +34,13 @@ class LoginController extends Controller {
                     ->where('email', $request['email'])
                     ->first();
                 if($user->role == 'i'){                    
-                    return response()->json(compact('token'))->setStatusCode(200);
+                    //return response()->json(compact('token'))->setStatusCode(200);
+                    return redirect()->route('inicio');
                 }
                 else {                    
-                    return response()->json(['error' => 'El tipo de usuario no es un Inspector'], 403);
+                    //return response()->json(['error' => 'El tipo de usuario no es un Inspector'], 403);
+                  return redirect()->route('inicio');
+                    
                 }
             }
         }
