@@ -28,8 +28,8 @@ Route::group(['middleware' => ['auth', 'farmer'],'namespace' => 'Farmer', 'prefi
     //Route::resource('usuarios', 'UsersController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update']]);
 });
 
-Route::resource('inspectores', 'InspectorController', ['middleware' => ['auth' ,'inspector']]);
+//Route::resource('inspectores', 'InspectorController', ['middleware' => ['auth' ,'inspector']]);
 
-Route::get('productores', ['as' => 'productores', 'uses' => 'FarmerController@index'])->middleware('farmer');
+//Route::get('productores', ['as' => 'productores', 'uses' => 'FarmerController@index'])->middleware('farmer');
 
 Route::get('productores/fincas/{farm}', ['as' => 'productores.fincas', 'uses' => 'FarmerController@getFarm'])->middleware('farmer');
