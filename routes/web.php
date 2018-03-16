@@ -25,7 +25,8 @@ Route::group(['middleware' => ['auth', 'inspector'],'namespace' => 'Inspector', 
 
 Route::group(['middleware' => ['auth', 'farmer'],'namespace' => 'Farmer', 'prefix' => 'farmer', 'as' => 'farmer.'], function() {
     Route::get('inicio', ['as' => 'inicio', 'uses' => 'FarmController@index']);//solo admi
-    //Route::resource('usuarios', 'UsersController', ['only' => ['index', 'create', 'store', 'show', 'edit', 'update']]);
+
+    Route::resource('animales', 'AnimalesController', ['only' => ['index']]);
 });
 
 //Route::resource('inspectores', 'InspectorController', ['middleware' => ['auth' ,'inspector']]);
