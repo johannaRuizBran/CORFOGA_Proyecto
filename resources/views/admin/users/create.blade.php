@@ -1,12 +1,33 @@
 @extends('layouts.admin')
 @section('page')
+    <script type="text/javascript">
+        $(document).on('submit', '[id^=description]', function (e) {
+          e.preventDefault();
+          var data = $(this).serialize();
+          swal({
+              title: "Estas segura(o)?",
+              text: "La cédula y el rol no prodrán ser cambiados después!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete) => {
+              if (willDelete) {
+                $('#description').submit();
+              } else {
+                
+              }
+            });
+        });
+    </script>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default shadow">
                     <div class="panel-heading">Crear un nuevo usuario</div>
                     <div class="panel-body">
-                        {!!Form::open(['route' => 'admin.usuarios.store', 'method' => 'POST', 'class' => 'form-horizontal', 'onsubmit' => 'return confirmAction("La cédula y el rol no prodrán ser cambiados después.")'])!!}
+                        {!!Form::open(['route' => 'admin.usuarios.store', 'method' => 'POST', 'class' => 'form-horizontal' ,
+                        'id'      => 'description'])!!}
                             {{ csrf_field() }}
                             <div class="form-group">
                                 {!!Form::label('role', 'Rol:', ['class' => 'col-md-4 control-label'])!!}
