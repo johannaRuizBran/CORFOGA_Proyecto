@@ -182,7 +182,7 @@ return [
          */
 
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        
 
 
         Collective\Html\HtmlServiceProvider::class,
