@@ -80,7 +80,7 @@ class UsersController extends Controller {
             return Redirect::to('admin/usuarios/create')->withErrors($validator)->withInput();
         }
         else {
-            $state = 'Listo';
+            $state = 'success';
             $message = 'El usuario fue creado exitosamente.';
             $alert_class = 'alert-success';
             try {
@@ -108,9 +108,16 @@ class UsersController extends Controller {
                 $alert_class = 'alert-danger';
             }
             // Se genera la alerta para informar al usuario acerca del éxito/fracaso del proceso.
-            Session::flash('state', $state);
-            Session::flash('message', $message);
-            Session::flash('alert_class', $alert_class);
+            //Session::flash('state', $state);
+            //Session::flash('message', $message);
+            //Session::flash('alert_class', $alert_class);
+
+            if ($state== "Error") {
+                alert()->error($message, 'Error!')->persistent('Close');
+            }
+            else{
+                alert()->success($message, 'Se ha realizado correctamente!')->autoclose(3500);;        
+            }
             return redirect()->route('admin.usuarios.index');
         }
     }
@@ -142,7 +149,7 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $state = 'Listo';
+        $state = 'success';
         $alert_class = 'alert-success';
         $user = User::find($id);
         try{
@@ -181,9 +188,15 @@ class UsersController extends Controller {
             $message = 'El usuario no pudo ser editado.';
             $alert_class = 'alert-warning';
         }
-        Session::flash('state', $state);
+        /*Session::flash('state', $state);
         Session::flash('message', $message);
-        Session::flash('alert_class', $alert_class);
+        Session::flash('alert_class', $alert_class);*/
+        if ($state== "Error") {
+            alert()->error($message, 'Error!')->persistent('Close');
+        }
+        else{
+            alert()->success($message, 'Se ha realizado correctamente!')->autoclose(3500);;        
+        }
         return redirect()->route('admin.usuarios.index');
     }
 
