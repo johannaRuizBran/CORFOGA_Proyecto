@@ -25,6 +25,7 @@ class UsersController extends Controller {
     public function index() {
         // Se toman todos los usuarios.
         $users = new User();
+        $users2 = new User();
         // Lista de filtros a aplicar.
         $queries = [];
         /* Los usuarios siempre están ordenados por el estado, pero podrían ordenarse
@@ -32,7 +33,13 @@ class UsersController extends Controller {
         $orderBy = 'state asc';
         if(request()->has('nombre')) {
             $name = request('nombre');
-            $users = $users->where(DB::raw('CONCAT(name, " ", lastName)'), 'like', '%'.$name.'%');
+        
+            $splitName = explode(' ', $name, 2);    
+            $first_name = $splitName[0]; 
+
+
+            $users = $users->where(DB::raw('CONCAT(name, " ", lastName)'), 'like', '%'.$name.'%')->orWhere(DB::raw('CONCAT(name, " ", lastName)'), 'like', '%'.$first_name.'%');            
+
             $queries['nombre'] = $name;
         }
         if(request()->has('rol')) {
