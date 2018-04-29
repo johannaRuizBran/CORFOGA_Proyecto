@@ -36,7 +36,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{route('inicio')}}"><i class="fa fa-home fa-fw"></i>Inicio</a></li>
                     @if (Auth::guest())
-                        <li><a href="{{route('login')}}"><i class="fa sign-in fa-fw"></i>Acceder</a></li>
+                        <li><a href="{{route('login')}}"><i class="fa sign-in fa-fw"></i>Accederuuuuu</a></li>
                     @else
                         @yield('admin-options')
                         <li class="dropdown">
